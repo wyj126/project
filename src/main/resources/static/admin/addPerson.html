@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>党员缴费系统</title>
+<script src="/utils/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<link href="/utils/css/layui-v2.5.5/layui/css/layui.css" rel="stylesheet" />
+<script language="javascript" src="/utils/css/layui-v2.5.5/layui/layui.js" type="text/javascript" ></script>
+</head>
+<ul class="layui-nav" lay-filter="">
+ <li class="layui-nav-item "><a href="adminface.html">欢迎admin管理员</a></li>
+  <li class="layui-nav-item"><a href="queryPerson.html">党员管理</a></li>
+  <li class="layui-nav-item"><a href="queryJf.html">缴费管理</a></li>
+  <li class="layui-nav-item layui-this"><a href="addPerson.html" >添加党员</a></li>
+  <li class="layui-nav-item"><a href="addJf.html">添加缴费记录</a></li>
+  <li class="layui-nav-item"><a href="">修改资料</a></li>
+ <!--  <li class="layui-nav-item" style=" margin-left:750px"><a href="/loginController/loginout"  >注销</a></li> -->
+</ul>
+</br>
+<form class="layui-form" action="">
+  <div class="layui-form-item">
+    <label  class="layui-form-label">姓名</label>
+    <div class="layui-input-block">
+      <input id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-inline">
+      <input  id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" />
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">年龄</label>
+    <div class="layui-input-inline">
+      <input  id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"/>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">民族</label>
+    <div class="layui-input-inline">
+      <select  id="nationame" name="nationame" lay-verify="required">
+        <option value=""></option>
+         <option value="汉族">汉族</option>  
+	    <option value="蒙古族">蒙古族</option>  
+	    <option value="回族">回族</option>  
+	    <option value="藏族">藏族</option>  
+	    <option value="维吾尔族">维吾尔族</option>  
+	    <option value="苗族">苗族</option>  
+	    <option value="彝族">彝族</option>  
+	    <option value="壮族">壮族</option>  
+	    <option value="布依族">布依族</option>  
+	    <option value="朝鲜族">朝鲜族</option>  
+	    <option value="满族">满族</option>  
+	    <option value="侗族">侗族</option>  
+	    <option value="瑶族">瑶族</option>  
+	    <option value="白族">白族</option>  
+	    <option value="土家族">土家族</option>  
+	    <option value="哈尼族">哈尼族</option>  
+	    <option value="哈萨克族">哈萨克族</option>  
+	    <option value="傣族">傣族</option>  
+	    <option value="黎族">黎族</option>  
+	    <option value="傈僳族">傈僳族</option>  
+	    <option value="佤族">佤族</option>  
+	    <option value="畲族">畲族</option>  
+	    <option value="高山族">高山族</option>  
+	    <option value="拉祜族">拉祜族</option>  
+	    <option value="水族">水族</option>  
+	    <option value="东乡族">东乡族</option>  
+	    <option value="纳西族">纳西族</option>  
+	    <option value="景颇族">景颇族</option>  
+	    <option value="柯尔克孜族">柯尔克孜族</option>  
+	    <option value="土族">土族</option>  
+	    <option value="达斡尔族">达斡尔族</option>  
+	    <option value="仫佬族">仫佬族</option>  
+	    <option value="羌族">羌族</option>  
+	    <option value="布朗族">布朗族</option>  
+	    <option value="撒拉族">撒拉族</option>  
+	    <option value="毛南族">毛南族</option>  
+	    <option value="仡佬族">仡佬族</option>  
+	    <option value="锡伯族">锡伯族</option>  
+	    <option value="阿昌族">阿昌族</option>  
+	    <option value="普米族">普米族</option>  
+	    <option value="塔吉克族">塔吉克族</option>  
+	    <option value="怒族">怒族</option>  
+	    <option value="乌孜别克族">乌孜别克族</option>  
+	    <option value="俄罗斯族">俄罗斯族</option>  
+	    <option value="鄂温克族">鄂温克族</option>  
+	    <option value="德昂族">德昂族</option>  
+	    <option value="保安族">保安族</option>  
+	    <option value="裕固族">裕固族</option>  
+	    <option value="京族">京族</option>  
+	    <option value="塔塔尔族">塔塔尔族</option>  
+	    <option value="独龙族">独龙族</option>  
+	    <option value="鄂伦春族">鄂伦春族</option>  
+	    <option value="赫哲族">赫哲族</option>  
+	    <option value="门巴族">门巴族</option>  
+	    <option value="珞巴族">珞巴族</option>  
+	    <option value="基诺族">基诺族</option> 
+      </select>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">性别</label>
+    <div class="layui-input-block">
+      <input class="sex" type="radio" name="sex" value="男" title="男" checked>
+      <input class="sex" type="radio" name="sex" value="女" title="女" >
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label  class="layui-form-label">备注</label>
+    <div class="layui-input-block">
+      <textarea id="level" name="level" placeholder="请输入党内职务" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" type="submit" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+	  	var param = data.field;
+    	//layer.msg(JSON.stringify(data.field));
+		
+		//layer.msg(JSON.stringify(data.field));
+		
+    	/* var person = new Object();
+    	person.name = $("#name").val();
+    	person.idcard =$("#pwd").val();
+    	person.id = $("#pid").val();
+    	person.age = $("#age").val();
+    	person.nationame = $("#nationame").val();
+    	var sex = $("input.sex");
+    	person.level = $("#level").val();
+    	var action = "/personController/addPerson";
+    	
+    	for (var i = 0; i < sex.length; i++) {
+			if (sex[i].checked) {
+				person.sex = sex[i].value;
+			}
+		}
+
+    	 $.ajax({
+			 url: action,
+			 type: "post",
+			 dataType : "json",
+			 data : person ,
+			 async : true ,  // 是异步还是异步中的同步
+			 success : function(data){
+				 layer.msg("操作成功");
+				 window.navigate(location) ;
+				 
+				 }
+		 }); */
+		 
+		 
+		 $.ajax({
+	            url:"/personController/addPerson",
+	            type:"post",
+	            data:param,
+	            success:function(res){
+	                if(res>0){
+	                	setTimeout(function(){
+	                    	top.layer.msg("添加成功！");
+	                    	 },1000);
+	                    setTimeout(function(){
+	                        top.layer.close(index);
+	                        //刷新页面
+	                        top.location.reload();
+	                    },1500);
+	                }else{
+	                	setTimeout(function(){
+	                		top.layer.msg("添加失败！");
+	                    	 },1000);
+	                }
+	            }
+	        })
+	    	
+    	
+    	
+    return false;
+  });
+});
+</script>
+<body>
+</body>
+</html>

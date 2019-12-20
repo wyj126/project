@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.d.mapper.Mapper">
+
+ 	
+ 	<select id="queryPersonByName" parameterType="String" resultType="java.lang.String">
+ 		select * from person where name = #{name,jdbcType=VARCHAR}
+ 	</select>
+ 	
+ 	<select id="queryLogin" resultType="java.lang.String">
+ 		select * from person where name=#{name} and idcard=#{password}
+ 	</select>
+  
+  <insert id="addPerson" parameterType="com.d.entity.Person" >
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="nationame != null" >
+        nationame,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name !=null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex !=null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age !=null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="nationame !=null">
+        #{nationame,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard !=null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+ 	
+ 	
+ 	<select id="queryAllDataFromTable" resultType="com.d.entity.Person">
+	    select * from  person
+	    <if test='keyWord!="" or keyWord!=null'>
+	   where name LIKE '%${keyWord}%'
+	    </if>
+	    limit #{page},#{limit}
+	</select>
+     <select id="queryAllCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(*) from person
+        <if test='_parameter != "" and _parameter != null'>
+            where name LIKE '%${_parameter}%'
+        </if>
+     </select>
+ 	
+ 	<select id="findAllPage" resultType="com.d.entity.Person">
+         select id,name,sex,age,nationame,idcard,level from person LIMIT #{before},#{after}
+     </select>
+   
+    <select id="count" resultType="int">
+        select count(*) from person
+    </select>
+
+	<update id="updatePerson" parameterType="com.d.entity.Person">
+		update person set 
+		name = #{name,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=VARCHAR},
+		age = #{age,jdbcType=VARCHAR},
+		nationame = #{nationame,jdbcType=VARCHAR},
+		idcard = #{idcard,jdbcType=VARCHAR},
+		level = #{level,jdbcType=VARCHAR} 
+		where id = #{id ,jdbcType=VARCHAR}
+	</update>
+	
+	<delete id="deletePerson" parameterType="java.lang.String">
+		delete from person where id = #{id}
+	</delete>
+	
+	<select id="findByID" parameterType="java.lang.String"  resultType="com.d.entity.Person">
+		select * from person where  id = #{id} 
+	</select>
+ 	
+</mapper>

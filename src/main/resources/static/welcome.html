@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/utils/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div style="margin: 10px">
+	<p id="p1" ><p>
+	<img style="width: 500px;height:500px" src="/utils/image/pig.jfif"/>
+	</div>
+	<script>
+		var n = null;
+		n = JSON.parse(window.localStorage.li);
+		//var data=$.cookie("data");
+		//var n=JSON.parse(data);
+		alert(n);
+		document.getElementById("p1").innerHTML="<div>"+"welcome&nbsp;"+n+"&nbsp;pigs"+"</div>";
+	</script>
+</body>
+</html>

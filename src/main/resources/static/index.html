@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>党员缴费系统</title>
+<script src="/utils/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<link href="/utils/css/layui-v2.5.5/layui/css/layui.css" rel="stylesheet" />
+<script language="javascript" src="/utils/css/layui-v2.5.5/layui/layui.js" type="text/javascript" ></script>
+</head>
+
+<body>
+<div align="center" style="width:400px; margin:0 auto">
+<form class="layui-form" id="login" method="post" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-inline">
+      <input type="text" id="name" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-inline">
+      <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"/>
+    </div>
+    </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">角色</label>
+    <div class="layui-input-inline">
+      <input type="radio" class="sex" name="sex" value="person" title="党员"/>
+      <input type="radio" class="sex" name="sex" value="admin" title="管理员" checked/>
+    </div>
+  </div>
+      <button id="" class="layui-btn" lay-submit lay-filter="formDemo" type="submit" >立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+  
+</form>
+ </div>
+<script>
+//Demo
+ layui.use('form', function(){
+  var form = layui.form;
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    //layer.msg(JSON.stringify(data.field));
+	  var name = $("#name").val();
+	  var password = $("#password").val();
+	  var role = $("input.sex");
+	  var action = null;
+	 
+	  for (var i = 0; i < role.length; i++) {
+			if (role[i].checked) {
+				role = role[i].value;
+			}
+		}
+	  if (role =='person'){
+	  	action = "/loginController/personlogin";
+	  }else{
+	  	action = "/loginController/adminlogin";
+	  }
+
+	  $.post(action,{"name":name,"password":password},function(data){
+	  	if (data==''){
+	  		
+	  		alert("登录失败");
+	  		parent.location.reload();
+	  	}else{
+	  		window.localStorage.li=JSON.stringify(data);
+	  		if (role == 'admin'){
+	  			location.href="/admin/adminface.html";
+		  		//$.cookie('data',JSON.stringify(data));
+	  		}else{
+	  			location.href="welcome.html";
+	  		}
+	  		
+	  	}
+	  	
+	  },"text");
+    return false;
+  });
+});
+ 
+
+ 
+</script>
+
+</body>
+</html>

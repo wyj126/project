@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.d.mapper.JfMapper">
+  
+  <insert id="addPersonJf" parameterType="com.d.entity.Jf" >
+    insert into jf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jfid != null" >
+        jfid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="isjf != null" >
+        isjf,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jfid != null" >
+        #{jfid,jdbcType=INTEGER},
+      </if>
+      <if test="name !=null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="time !=null">
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="isjf !=null">
+        #{isjf,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+ 	
+ 	<select id="queryAllDataFromTable" resultType="com.d.entity.Jf">
+	    select * from  jf
+	    <if test='keyWord!="" or keyWord!=null'>
+	  		where name LIKE '%${keyWord}%' or time LIKE '%${keyWord}%'
+	    </if>
+	    limit #{page},#{limit}
+	</select>
+     <select id="queryAllCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(*) from jf
+        <if test='_parameter != "" and _parameter != null'>
+            where name LIKE '%${_parameter}%'
+        </if>
+     </select>
+ 	
+ 	<select id="findAllPage" resultType="com.d.entity.Jf">
+         select jfid,name,time,isjf from person LIMIT #{before},#{after}
+     </select>
+   
+    <select id="count" resultType="int">
+        select count(*) from jf
+    </select>
+
+	<update id="updateJf" parameterType="com.d.entity.Jf">
+		update person set 
+		name = #{name,jdbcType=VARCHAR},
+		time = #{time,jdbcType=DATE},
+		isjf = #{isjf,jdbcType=VARCHAR},
+		where jfid = #{jfid ,jdbcType=VARCHAR}
+	</update>
+	
+	<delete id="deleteJf" parameterType="java.lang.String">
+		delete from jf where jfid = #{jfid}
+	</delete>
+	
+	<select id="findByID" parameterType="java.lang.String"  resultType="com.d.entity.Jf">
+		select * from jf where  jfid = #{jfid} 
+	</select>
+ 	
+ 	
+</mapper>
