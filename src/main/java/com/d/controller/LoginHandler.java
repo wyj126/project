@@ -2,6 +2,7 @@ package com.d.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,15 @@ public class LoginHandler {
 	
 	
 	@RequestMapping("/adminlogin")
-	public String queryByname(@RequestParam(value="name") String aname,@RequestParam(value="password") String apassword,HttpSession httpSession) {
+	public String queryByname(@RequestParam(value="name") String aname,@RequestParam(value="password") String apassword,HttpSession session) {
 		String is = null;
+		System.out.println("Handler");
 		is = adminService.queryAdmin(aname, apassword);
 		System.out.println(is);
 		 if (is != null && !"".equals(is)) {
-	            httpSession.setAttribute("aname", aname);
+	            session.setAttribute("name", aname);
 	        } else {
+	        	
 	        }
 		System.out.println(aname+"----"+apassword);
 		
@@ -57,8 +60,9 @@ public class LoginHandler {
 	
 	
 	@RequestMapping("/loginout")
-	public ModelAndView queryByname3(HttpSession httpSession) {
-		 httpSession.removeAttribute("aname");
+	public ModelAndView queryByname3(HttpSession session) {
+		 session.removeAttribute("name");
+		 System.out.println(session.getAttribute("name"));
 		 System.out.println("===");
         return new ModelAndView(new RedirectView("/index.html"));
 	}
