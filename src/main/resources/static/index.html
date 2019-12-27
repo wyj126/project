@@ -6,21 +6,36 @@
 <script src="/utils/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <link href="/utils/css/layui-v2.5.5/layui/css/layui.css" rel="stylesheet" />
 <script language="javascript" src="/utils/css/layui-v2.5.5/layui/layui.js" type="text/javascript" ></script>
+<style type="text/css">
+
+
+
+</style>
 </head>
 
-<body background="/utils/wallhaven-0jryjp.jpg">
-<div align="center" style="width:400px; margin:0 auto;margin-top:200px;">
+<body background="/utils/bg.jpg">
+<div class="login" align="center" style="width:380px;height:300px; margin:0 auto;margin-top:200px;background-color:white;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;">
+<br /><br /><br />
 <form class="layui-form" id="login" method="post" action="">
   <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-inline">
-      <input type="text" id="name" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+      <input type="text" id="name" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" style=" border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;"/>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"/>
+      <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style=" border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;"/>
     </div>
     </div>
   <div class="layui-form-item">
@@ -30,8 +45,14 @@
       <input type="radio" class="sex" name="sex" value="admin" title="管理员" checked/>
     </div>
   </div>
-      <button id="" class="layui-btn" lay-submit lay-filter="formDemo" type="submit" >立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      <button id="" class="layui-btn" lay-submit lay-filter="formDemo" type="submit" style=" border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary" style=" border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;">重置</button>
   
 </form>
  </div>
