@@ -33,7 +33,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 		  System.out.println(admin); 
 		  if(admin == null) { 
 			  System.out.println("尚未登录，调到登录页面");
-			  response.sendRedirect("/index.html");		  
+			  response.sendRedirect("/index.html");	
+			  System.out.println("*-***********************************");
 			  return false; 
 		  }
 		  

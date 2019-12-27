@@ -16,7 +16,8 @@ public class LoginConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		
-		registry.addInterceptor(li).addPathPatterns("/**").excludePathPatterns("/index.html","/","/utils/**","/","/favicon.ico","/","/loginController/*","/");
+		registry.addInterceptor(li).addPathPatterns("/**").excludePathPatterns("/index.html","/","/utils/**","/","/css/**","/","/js/**","/","/favicon.ico","/","/loginController/adminlogin","/","/loginController/loginout","/");
+		
 		 
 	}
 	

@@ -59,17 +59,6 @@ layui.use('laydate', function(){
 </form>
  
 <script>
-$("#name").blur(function(){
-	var name = $("#name").val();
-	$.post("/personController/queryByname",{name:name},function(data){
-		if (data == null||data==''){
-			alert("姓名不存在,请重新填写或注册");
-			parent.location.reload();
-		}
-		
-	},"text")
-});
-
 //Demo
 layui.use('form', function(){
   var form = layui.form;
@@ -77,7 +66,19 @@ layui.use('form', function(){
   //监听提交
   form.on('submit(formDemo)', function(data){
    // layer.msg(JSON.stringify(data.field));
-    var param = data.field;
+    var i = 1;
+    var name = $("#name").val();
+	$.post("/personController/queryByname",{name:name},function(data){
+		if (data == null||data==''){
+			alert("姓名不存在,请重新填写或注册");
+			i = 0;
+			parent.location.reload();
+		}
+		
+	},"text")
+   
+   if (i>0){
+   	var param = data.field;
     param.time = $("#test1").val();
     //var action = "";
     var action = "/jfController/addPersonJf";
@@ -109,8 +110,8 @@ layui.use('form', function(){
                  },1500);
              }
 			 }
-	 })
-	 
+	 });
+   }
     return false;
   });
 });
