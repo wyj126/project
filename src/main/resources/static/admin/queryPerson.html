@@ -18,7 +18,7 @@
  <!--  <li class="layui-nav-item" style=" margin-left:750px"><a href="/loginController/loginout" >注销</a></li> -->
 </ul>
 <div style="margin-top: 17px;margin-left: 610px;">
- 人员搜索： <div class="layui-input-inline"><input type="text" class="layui-input"  id="sear1" placeholder="请输入人员姓名"/>
+ 人员搜索： <div class="layui-input-inline"><input maxlength="11" type="text" class="layui-input"  id="sear1" placeholder="请输入人员姓名"/>
  </div>
     <button type="button" class="layui-btn" id="sear2" onclick="search()" >搜索</button>
 </div>
@@ -139,32 +139,32 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">姓名</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="name"  class="layui-input" value="'+data.name+'" >' +
+			        '<input maxlength="20" type="text"  required lay-verify="required" name="name"  class="layui-input" value="'+data.name+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">性别</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="sex"  class="layui-input" value="'+data.sex+'" >' +
+			        '<input maxlength="1" type="text"  required lay-verify="required" name="sex"  class="layui-input" value="'+data.sex+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">年龄</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="age"  class="layui-input" value="'+data.age+'" >' +
+			        '<input maxlength="4" type="text"  required lay-verify="required" name="age"  class="layui-input" value="'+data.age+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">民族</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="nationame"    class="layui-input" value="'+data.nationame+'" >' +
+			        '<input maxlength="5" type="text"  required lay-verify="required" name="nationame"    class="layui-input" value="'+data.nationame+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">密码</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="idcard"  class="layui-input" value="'+data.idcard+'" >' +
+			        '<input maxlength="20" type="text"  required lay-verify="required" name="idcard"  class="layui-input" value="'+data.idcard+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">备注</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="level"    class="layui-input" value="'+data.level+'" >' +
+			        '<input maxlength="20" type="text"  required lay-verify="required" name="level"    class="layui-input" value="'+data.level+'" >' +
 			        '</div></div>' +
 			        '</div>' +			      
 			        '</form>',

@@ -20,7 +20,7 @@
 </ul>
 
 <div style="margin-top: 17px;margin-left: 610px;">
- 缴费搜索： <div class="layui-input-inline"><input type="text" class="layui-input"  id="sear1" placeholder="请输入姓名或日期"/>
+ 缴费搜索： <div class="layui-input-inline"><input maxlength="11" type="text" class="layui-input"  id="sear1" placeholder="请输入姓名或日期"/>
  </div>
     <button type="button" class="layui-btn" id="sear2" onclick="search()" >搜索</button>
 </div>
@@ -134,17 +134,17 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">姓名</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="name"  class="layui-input" value="'+data.name+'" >' +
+			        '<input maxlength="20" type="text"  required lay-verify="required" name="name"  class="layui-input" value="'+data.name+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">缴费时间</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
+			        '<input maxlength="10" type="text"  required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">是否缴费</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="isjf"  class="layui-input" value="'+data.isjf+'" >' +
+			        '<input maxlength="1" type="text"  required lay-verify="required" name="isjf"  class="layui-input" value="'+data.isjf+'" >' +
 			        '</div></div>' +
 			        '</div>' +			      
 			        '</form>',

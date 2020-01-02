@@ -20,13 +20,13 @@
   <div class="layui-form-item">
     <label  class="layui-form-label">姓名</label>
     <div class="layui-input-inline">
-      <input id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
+      <input maxlength="20" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"  />
+      <input maxlength="20" id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"  />
     </div>
     <div class="layui-input-inline">
     	<font id="f2" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
@@ -35,7 +35,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">年龄</label>
     <div class="layui-input-inline">
-      <input  id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"/>
+      <input maxlength="4" id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input"/>
     </div>
      <div class="layui-input-inline">
     	<font id="f3" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
@@ -114,9 +114,9 @@
     </div>
   </div>
   <div class="layui-form-item layui-form-text">
-    <label  class="layui-form-label">备注</label>
-    <div class="layui-input-block">
-      <textarea id="level" name="level" placeholder="请输入党内职务" class="layui-textarea"></textarea>
+    <label  class="layui-form-label">职务</label>
+    <div class="layui-input-inline">
+      <input maxlength="20" id="level" name="level" placeholder="请输入党内职务" required lay-verify="required"  autocomplete="off" class="layui-input"  />
     </div>
   </div>
   <div class="layui-form-item">
@@ -183,6 +183,7 @@ layui.use('form', function(){
 	                if(res>0){
 	                	setTimeout(function(){
 	                    	top.layer.msg("添加成功！");
+	                    	parent.location.reload(); 
 	                    	 },1000);
 	                    setTimeout(function(){
 	                        top.layer.close(index);
