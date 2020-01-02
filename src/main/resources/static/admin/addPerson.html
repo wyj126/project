@@ -26,13 +26,19 @@
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input  id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" onkeyup="this.value=this.value.replace(/[^\d]/g,'') " onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" />
+      <input id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"  />
+    </div>
+    <div class="layui-input-inline">
+    	<font id="f2" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">年龄</label>
     <div class="layui-input-inline">
       <input  id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"/>
+    </div>
+     <div class="layui-input-inline">
+    	<font id="f3" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
     </div>
   </div>
   <div class="layui-form-item">
@@ -122,6 +128,39 @@
 </form>
  
 <script>
+var i =1;
+
+$("#pwd").blur(function(){
+	var $num = $("#pwd").val();
+	var reg = /^[0-9]*[1-9][0-9]*$/;
+	if(!(reg.test($num))){
+		if ($num == "" || $num.length ==0){
+			$("#f2").css("display","none");
+		}else{
+			$("#f2").css("display","inline");
+			i=0;
+		}
+	}else{
+		$("#f2").css("display","none");
+	}
+});
+
+$("#age").blur(function(){
+	var $num = $("#age").val();
+	var reg = /^[0-9]*[1-9][0-9]*$/;
+	if(!(reg.test($num))){
+		if ($num == "" || $num.length ==0){
+			$("#f3").css("display","none");
+		}else{
+			$("#f3").css("display","inline");
+			i=0;
+		}
+	}else{
+		$("#f3").css("display","none");
+	}
+});
+
+
 //Demo
 layui.use('form', function(){
   var form = layui.form;
@@ -132,37 +171,10 @@ layui.use('form', function(){
     	//layer.msg(JSON.stringify(data.field));
 		
 		//layer.msg(JSON.stringify(data.field));
-		
-    	/* var person = new Object();
-    	person.name = $("#name").val();
-    	person.idcard =$("#pwd").val();
-    	person.id = $("#pid").val();
-    	person.age = $("#age").val();
-    	person.nationame = $("#nationame").val();
-    	var sex = $("input.sex");
-    	person.level = $("#level").val();
-    	var action = "/personController/addPerson";
-    	
-    	for (var i = 0; i < sex.length; i++) {
-			if (sex[i].checked) {
-				person.sex = sex[i].value;
-			}
-		}
+	  	if (i==0){
+	  		top.location.reload();
+	  	} 
 
-    	 $.ajax({
-			 url: action,
-			 type: "post",
-			 dataType : "json",
-			 data : person ,
-			 async : true ,  // 是异步还是异步中的同步
-			 success : function(data){
-				 layer.msg("操作成功");
-				 window.navigate(location) ;
-				 
-				 }
-		 }); */
-		 
-		 
 		 $.ajax({
 	            url:"/personController/addPerson",
 	            type:"post",
@@ -183,9 +195,7 @@ layui.use('form', function(){
 	                    	 },1000);
 	                }
 	            }
-	        })
-	    	
-    	
+	        });
     	
     return false;
   });
