@@ -68,14 +68,14 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 	    		,url:'/personController/findallEmp?keyWord='+kwx  //数据请求路径
 	            ,cellMinWidth: 80
 	            ,cols: [[
-	                {field:'id', width:200, title: 'ID', sort: true}
-	                ,{field:'name', width:180, title: '姓名'}
-	                ,{field:'sex', width:100, title: '性别'}
-	                ,{field:'age', width:100, title: '年龄', sort: true}
-	               ,{field:'nationame', width:100, title: '民族'}
-	                ,{field:'idcard', width:100, title: '密码'}
-	                ,{field:'level', width:100, title: '职位'}
-	                ,{fixed: 'right', width: 165,title: '操作', align:'center', toolbar: '#barDemo'}
+	                {field:'id', width:200, title: 'ID', sort: true, align:'center'}
+	                ,{field:'name', width:180, title: '姓名', align:'center'}
+	                ,{field:'sex', width:100, title: '性别', align:'center'}
+	                ,{field:'age', width:100, title: '年龄', sort: true, align:'center'}
+	               ,{field:'nationame', width:100, title: '民族', align:'center'}
+	                ,{field:'idcard', width:100, title: '密码', align:'center'}
+	                ,{field:'level', width:100, title: '职位', align:'center'}
+	                ,{fixed: 'right', width: 165,title: '操作', align:'center', toolbar: '#barDemo', align:'center'}
 	          ]]
 	    		
 	 		 });
@@ -144,8 +144,6 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-input-inline">' +
 			        '<input type="text"  required lay-verify="required" name="sex"  class="layui-input" value="'+data.sex+'" >' +
 			        '</div></div>' +
-			        '</div>' +
-			        '<div class="layui-form-item">' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">年龄</label>' +
 			        '<div class="layui-input-inline">' +
@@ -156,8 +154,6 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-input-inline">' +
 			        '<input type="text"  required lay-verify="required" name="nationame"    class="layui-input" value="'+data.nationame+'" >' +
 			        '</div></div>' +
-			        '</div>' +
-			        '<div class="layui-form-item">' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">密码</label>' +
 			        '<div class="layui-input-inline">' +
