@@ -66,10 +66,10 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 	    		,url:'/jfController/findallEmp?keyWord='+kwx  //数据请求路径
 	            ,cellMinWidth: 80
 	            ,cols: [[
-	                {field:'jfid', width:180, title: '缴费订单', sort: true}
-	                ,{field:'name', width:180, title: '姓名'}
-	                ,{field:'time', width:250, title: '缴费时间'}
-	                ,{field:'isjf', width:140, title: '是否缴费', sort: true}
+	                {field:'jfid', width:180, title: '缴费订单', sort: true, align:'center'}
+	                ,{field:'name', width:180, title: '姓名', align:'center'}
+	                ,{field:'time', width:250, title: '缴费时间', align:'center'}
+	                ,{field:'isjf', width:140, title: '是否缴费', sort: true, align:'center'}
 	                ,{fixed: 'right', width: 197,title: '操作', align:'center', toolbar: '#barDemo'}
 	          ]]
 	    		
@@ -120,14 +120,14 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
     				area: ['700px', '550px'],
         			type: 1,
         			closeBtn: false,
-        			shift: 25,       		
-        			content: '<blockquote class="layui-elem-quote layui-text">注意事项: 请填写相关的数据信息! </blockquote>' +
+        			shift: 25,     
+			        content: '<blockquote class="layui-elem-quote layui-text">注意事项: 请填写相关的数据信息! </blockquote>' +
 			       	'<form class="layui-form"> ' +
 			        '<div class="layui-form-item">' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">缴费订单</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input type="text"  required lay-verify="required" name="jfid"  class="layui-input" value="'+data.jfid+'" >' +
+			        '<input type="text"  disabled required lay-verify="required" name="jfid"  class="layui-input" value="'+data.jfid+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">姓名</label>' +
@@ -139,15 +139,12 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-input-inline">' +
 			        '<input type="text"  required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
 			        '</div></div>' +
-			        '</div>' +
-			        '<div class="layui-form-item">' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">是否缴费</label>' +
 			        '<div class="layui-input-inline">' +
 			        '<input type="text"  required lay-verify="required" name="isjf"  class="layui-input" value="'+data.isjf+'" >' +
 			        '</div></div>' +
-			        '</div>' +
-			        
+			        '</div>' +			      
 			        '</form>',
 			        btnAlign: 'c',
         			btn: ['确定', '取消'],
