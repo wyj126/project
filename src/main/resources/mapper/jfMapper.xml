@@ -35,9 +35,9 @@
   </insert>
  	
  	<select id="queryAllDataFromTable" resultType="com.d.entity.Jf">
-	    select * from  jf
+	    select * from jf
 	    <if test='keyWord!="" or keyWord!=null'>
-	  		where name LIKE binary '%${keyWord}%' or time LIKE '%${keyWord}%'
+	  		where name LIKE '%${keyWord}%' or time LIKE '%${keyWord}%'
 	    </if>
 	    limit #{page},#{limit}
 	</select>
