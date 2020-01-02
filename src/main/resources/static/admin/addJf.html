@@ -88,7 +88,7 @@ layui.use('form', function(){
 		 data : param ,
 		 async : true ,  // 是异步还是异步中的同步
 		 success : function(res){
-			 if(res.state === "ok"){
+			 if(res>0){
              	setTimeout(function(){
                  	top.layer.msg("添加成功！");
                  	 },1000);
