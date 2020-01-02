@@ -91,13 +91,13 @@ layui.use('form', function(){
 			 if(res>0){
              	setTimeout(function(){
                  	top.layer.msg("添加成功！");
-                 	 },1000);
+                 	 },1500);
                  setTimeout(function(){
-                     top.layer.close(index);
+                   //  top.layer.close(index);
                      //刷新页面
-                     top.location.reload();
-                     parent.location.reload();
-                 },1500);
+                   //  top.location.reload();
+                	 parent.location.reload();
+                 },3000);
              }else{
              	setTimeout(function(){
              		top.layer.msg("添加失败！");
