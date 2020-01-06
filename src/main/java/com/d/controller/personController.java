@@ -33,9 +33,7 @@ public class personController {
 	
 	@RequestMapping("/queryByname")
 	public String queryByname(@RequestParam(value="name") String name) {
-		System.out.println(name);
 		String pName = personService.queryPersonByName(name) ;
-		System.out.println(pName+"+++++++++++++++++++++++++++++++++++");
 		return pName;
 		
 	}
