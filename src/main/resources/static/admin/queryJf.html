@@ -19,7 +19,23 @@
 <!--   <li class="layui-nav-item" style=" margin-left:750px"><a href="/loginController/loginout"  >注销</a></li> -->
 </ul>
 
-<div style="margin-top: 17px;margin-left: 610px;">
+<div>
+<form class="layui-form" action="">
+<div class="layui-form-item" style="margin-top: 17px;margin-left: 250px;">
+    <label class="layui-form-label">年限：</label>
+    <div class="layui-input-inline">
+      <select  id="year" name="year" lay-verify="required">
+        <option value=""></option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>       
+          </select>
+    </div>
+  </div>
+  </form>
+  </div>
+
+<div>
  缴费搜索： <div class="layui-input-inline"><input maxlength="11" type="text" class="layui-input"  id="sear1" placeholder="请输入姓名或日期"/>
  </div>
     <button type="button" class="layui-btn" id="sear2" onclick="search()" >搜索</button>
