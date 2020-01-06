@@ -14,7 +14,7 @@
 </head>
 
 <body background="/utils/bg.jpg">
-<div class="login" align="center" style="width:380px;height:300px; margin:0 auto;margin-top:200px;background-color:white;
+<div class="login" align="center" style="width:380px;height:250px; margin:0 auto;margin-top:200px;background-color:white;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;">
@@ -38,13 +38,6 @@
     -o-border-radius: 10px;"/>
     </div>
     </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">角色</label>
-    <div class="layui-input-inline">
-      <input type="radio" class="sex" name="sex" value="person" title="党员"/>
-      <input type="radio" class="sex" name="sex" value="admin" title="管理员" checked/>
-    </div>
-  </div>
       <button id="" class="layui-btn" lay-submit lay-filter="formDemo" type="submit" style=" border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -66,19 +59,7 @@
     //layer.msg(JSON.stringify(data.field));
 	  var name = $("#name").val();
 	  var password = $("#password").val();
-	  var role = $("input.sex");
-	  var action = null;
-	 
-	  for (var i = 0; i < role.length; i++) {
-			if (role[i].checked) {
-				role = role[i].value;
-			}
-		}
-	  if (role =='person'){
-	  	action = "/loginController/personlogin";
-	  }else{
-	  	action = "/loginController/adminlogin";
-	  }
+	  var action = "/loginController/adminlogin";
 	  $.post(action,{"name":name,"password":password},function(data){
 	  	if (data==''){
 	  		
@@ -86,13 +67,7 @@
 	  		parent.location.reload();
 	  	}else{
 	  		window.localStorage.li=JSON.stringify(data);
-	  		if (role == 'admin'){
 	  			location.href="/admin/adminface.html";
-		  		//$.cookie('data',JSON.stringify(data));
-	  		}else{
-	  			location.href="welcome.html";
-	  		}
-	  		
 	  	}
 	  	
 	  },"text");
