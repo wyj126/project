@@ -7,7 +7,7 @@ public class Person {
 	private String sex;
 	private Integer age;
 	private String nationame;
-	private Integer idcard;
+	private String idcard;
 	private String level;
 	
 	
@@ -41,10 +41,10 @@ public class Person {
 	public void setNationame(String nationame) {
 		this.nationame = nationame;
 	}
-	public Integer getIdcard() {
+	public String getIdcard() {
 		return idcard;
 	}
-	public void setIdcard(Integer idcard) {
+	public void setIdcard(String idcard) {
 		this.idcard = idcard;
 	}
 	public String getLevel() {

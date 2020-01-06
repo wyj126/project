@@ -57,10 +57,10 @@
     </select>
 
 	<update id="updateJf" parameterType="com.d.entity.Jf">
-		update person set 
+		update jf set 
 		name = #{name,jdbcType=VARCHAR},
 		time = #{time,jdbcType=DATE},
-		isjf = #{isjf,jdbcType=VARCHAR},
+		isjf = #{isjf,jdbcType=VARCHAR}
 		where jfid = #{jfid ,jdbcType=VARCHAR}
 	</update>
 	

@@ -101,7 +101,7 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
                         		layer.close(index);
                         		layer.msg("删除成功", {icon: 6});
                         		  layer.closeAll();
-			                    parent.location.reload();
+			                  //  parent.location.reload();
                         		Load(); //删除完需要加载数据
                    			 }
                 		},
@@ -114,11 +114,12 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
     		} else if(obj.event === 'edit'){
     			console.log(data);
     			console.log(obj);
+    		//	alert(data.jfid+" "+data.name+" "+data.time+" "+data.isjf);
       			//layer.alert('编辑行：<br>'+ JSON.stringify(data))
       			layer.open({
       			 	shadeClose: true,
     				shade: false,
-    				maxmin: true, //开启最大化最小化按钮
+    				maxmin: false, //开启最大化最小化按钮
     				area: ['700px', '550px'],
         			type: 1,
         			closeBtn: false,
@@ -139,7 +140,7 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">缴费时间</label>' +
 			        '<div class="layui-input-inline">' +
-			        '<input maxlength="10" type="text"  required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
+			        '<input type="text" required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">是否缴费</label>' +
@@ -147,7 +148,8 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			        '<input maxlength="1" type="text"  required lay-verify="required" name="isjf"  class="layui-input" value="'+data.isjf+'" >' +
 			        '</div></div>' +
 			        '</div>' +			      
-			        '</form>',
+			        '</form>'
+			        ,
 			        btnAlign: 'c',
         			btn: ['确定', '取消'],
 			         yes: function (index, layero) {
@@ -158,7 +160,8 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			                isjf: $("input[name='isjf']").val(),
 	   
 			            };
-			            console.log(formData);
+			         //  alert(formData.jfid+" "+formData.name+" "+formData.time+" "+formData.isjf);
+			           
 			            $.post('/jfController/jfedit', formData, function (data) {
 			            
 			            console.log(window.location.href);

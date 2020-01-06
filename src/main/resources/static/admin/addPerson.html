@@ -27,9 +27,9 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">密码</label>
+    <label class="layui-form-label">身份证号</label>
     <div class="layui-input-inline">
-      <input maxlength="20" id="pwd" type="password" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"  />
+      <input maxlength="20" id="idcard" type="text" name="idcard" required lay-verify="required" placeholder="请输入身份证号" autocomplete="off" class="layui-input"  />
     </div>
     <div class="layui-input-inline">
     	<font id="f2" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
@@ -116,13 +116,17 @@
       <input class="sex" type="radio" name="sex" value="女" title="女" >
     </div>
   </div>
-  <div class="layui-form-item layui-form-text">
-    <label  class="layui-form-label">职务</label>
+  <div class="layui-form-item">
+    <label class="layui-form-label">职务</label>
     <div class="layui-input-inline">
-      <input maxlength="20" id="level" name="level" placeholder="请输入党内职务" required lay-verify="required"  autocomplete="off" class="layui-input"  />
-    </div>
-      <div class="layui-input-inline">
-    	<font id="f4" style="display:none;position:relative;top:8px" size="3" color="red" >*职务格式不符合</font>
+      <select style="width: 190px" id="level" name="level" lay-verify="required">
+        <option value=""></option>
+         <option value="党支部书记">党支部书记</option>  
+	    <option value="党支部副书记">党支部副书记</option>  
+	    <option value="组织委员">组织委员</option>  
+	    <option value="纪检委员">纪检委员</option>   
+	    <option value="党员">党员</option>   
+      </select>
     </div>
   </div>
   <div class="layui-form-item">
@@ -181,20 +185,7 @@ $("#age").blur(function(){
 	}
 });
 
-$("#level").blur(function(){
-	var $num = $("#level").val();
-	var reg = /^[\u4e00-\u9fa5]+$/;
-	if(!(reg.test($num))){
-		if ($num == "" || $num.length ==0){
-			$("#f4").css("display","none");
-		}else{
-			$("#f4").css("display","inline");
-			i=0;
-		}
-	}else{
-		$("#f4").css("display","none");
-	}
-});
+
 //Demo
 layui.use('form', function(){
   var form = layui.form;

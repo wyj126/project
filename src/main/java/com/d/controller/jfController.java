@@ -64,7 +64,7 @@ public class jfController {
 		        map.put("data",datas);
 		        System.out.println(map.toString());
 		        return map;
-		    }
+		    }    
 		       
 
 		@RequestMapping(value="/jfedit",method=RequestMethod.POST)
@@ -76,12 +76,14 @@ public class jfController {
 			personjf.setName(jf.getName());
 			personjf.setTime(jf.getTime());
 			personjf.setIsjf(jf.getIsjf());
+			System.out.println(personjf+"%%%%%%%%%%%%%%%%%%%%%");
 			jfService.updateJf(personjf);
 			JSONArray json = JSONArray.fromObject(personjf);
 		    String js = json.toString();
 		    //*****转为layui需要的json格式
 		    String jso = "{\"code\":200,\"msg\":\"\",\"count\":"+0+",\"data\":"+js+"}";
-		    return jso;
+		    System.out.println(jso);
+		    return js;
 		}
 
 		//删除
