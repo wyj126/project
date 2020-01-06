@@ -22,6 +22,9 @@
     <div class="layui-input-inline">
       <input maxlength="20" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
     </div>
+    <div class="layui-input-inline">
+    	<font id="f1" style="display:none;position:relative;top:8px" size="3" color="red" >*姓名格式不符合</font>
+    </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
@@ -38,7 +41,7 @@
       <input maxlength="4" id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input"/>
     </div>
      <div class="layui-input-inline">
-    	<font id="f3" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
+    	<font id="f3" style="display:none;position:relative;top:8px" size="3" color="red" >*年龄格式不符合</font>
     </div>
   </div>
   <div class="layui-form-item">
@@ -118,6 +121,9 @@
     <div class="layui-input-inline">
       <input maxlength="20" id="level" name="level" placeholder="请输入党内职务" required lay-verify="required"  autocomplete="off" class="layui-input"  />
     </div>
+      <div class="layui-input-inline">
+    	<font id="f4" style="display:none;position:relative;top:8px" size="3" color="red" >*职务格式不符合</font>
+    </div>
   </div>
   <div class="layui-form-item">
     <div class="layui-input-block">
@@ -129,6 +135,21 @@
  
 <script>
 var i =1;
+
+$("#name").blur(function(){
+	var $num = $("#name").val();
+	var reg = /^[\u4e00-\u9fa5]+$/;
+	if(!(reg.test($num))){
+		if ($num == "" || $num.length ==0){
+			$("#f1").css("display","none");
+		}else{
+			$("#f1").css("display","inline");
+			i=0;
+		}
+	}else{
+		$("#f1").css("display","none");
+	}
+});
 
 $("#pwd").blur(function(){
 	var $num = $("#pwd").val();
@@ -160,7 +181,20 @@ $("#age").blur(function(){
 	}
 });
 
-
+$("#level").blur(function(){
+	var $num = $("#level").val();
+	var reg = /^[\u4e00-\u9fa5]+$/;
+	if(!(reg.test($num))){
+		if ($num == "" || $num.length ==0){
+			$("#f4").css("display","none");
+		}else{
+			$("#f4").css("display","inline");
+			i=0;
+		}
+	}else{
+		$("#f4").css("display","none");
+	}
+});
 //Demo
 layui.use('form', function(){
   var form = layui.form;
@@ -171,12 +205,13 @@ layui.use('form', function(){
     	//layer.msg(JSON.stringify(data.field));
 		
 		//layer.msg(JSON.stringify(data.field));
+		var action = "/personController/addPerson";
 	  	if (i==0){
-	  		top.location.reload();
+	  		action = " ";
 	  	} 
 
 		 $.ajax({
-	            url:"/personController/addPerson",
+	            url:action,
 	            type:"post",
 	            data:param,
 	            success:function(res){

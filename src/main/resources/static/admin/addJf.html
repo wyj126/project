@@ -23,6 +23,9 @@
     <div class="layui-input-inline">
       <input maxlength="15" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
     </div>
+    <div class="layui-input-inline">
+    	<font id="f2" style="display:none;position:relative;top:8px";size="3"; color="red"; >*不存在此人或姓名输入有误</font>
+    </div>
   </div>
   
    <div class="layui-form-item">
@@ -40,7 +43,9 @@ layui.use('laydate', function(){
   //执行一个laydate实例
   laydate.render({
     elem: '#test1' //指定元素
+    ,max:0
   });
+  
 });
 </script>
   <div class="layui-form-item">
@@ -58,6 +63,25 @@ layui.use('laydate', function(){
 </form>
  
 <script>
+var i = 1;
+$("#name").blur(function(){
+	$.post("/personController/queryByname",{name:$("#name").val()},function(data){
+		//alert($("#name").val());
+		if($("#name").val() == ''||$("#name").val().length ==0){
+			$("#f2").css("display","none");
+		}else if ($("#name").val().length>0){
+			//alert(data);
+			if (data == null||data==''){
+				$("#f2").css("display","inline");
+			}else{
+				$("#f2").css("display","none");
+				 i =0;
+			}
+		}
+		//alert(data);
+	},"text")
+});
+
 //Demo
 layui.use('form', function(){
   var form = layui.form;
@@ -65,22 +89,14 @@ layui.use('form', function(){
   //监听提交
   form.on('submit(formDemo)', function(data){
    // layer.msg(JSON.stringify(data.field));
-    var i = 1;
-    var name = $("#name").val();
-	$.post("/personController/queryByname",{name:name},function(data){
-		if (data == null||data==''){
-			alert("姓名不存在,请重新填写或注册");
-			i = 0;
-			parent.location.reload();
-		}
-		
-	},"text")
+   var action = " ";
    
-   if (i>0){
+   if (i == 0){ 
+	   action = "/jfController/addPersonJf";
+   }
    	var param = data.field;
     param.time = $("#test1").val();
     //var action = "";
-    var action = "/jfController/addPersonJf";
     $.ajax({
 		 url: action,
 		 type: "get",
@@ -91,13 +107,13 @@ layui.use('form', function(){
 			 if(res>0){
              	setTimeout(function(){
                  	top.layer.msg("添加成功！");
-                 	 },1500);
+                 	 },1400);
                  setTimeout(function(){
                    //  top.layer.close(index);
                      //刷新页面
                    //  top.location.reload();
                 	 parent.location.reload();
-                 },3000);
+                 },2500);
              }else{
              	setTimeout(function(){
              		top.layer.msg("添加失败！");
@@ -110,7 +126,7 @@ layui.use('form', function(){
              }
 			 }
 	 });
-   }
+
     return false;
   });
 });
