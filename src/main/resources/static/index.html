@@ -62,12 +62,13 @@
 	  var action = "/loginController/adminlogin";
 	  $.post(action,{"name":name,"password":password},function(data){
 	  	if (data==''){
-	  		
-	  		alert("登录失败");
-	  		parent.location.reload();
+	  		layer.msg('用户名或密码有误', function(){
+	  		//关闭后的操作
+	  		});
+	  	//	parent.location.reload();
 	  	}else{
 	  		window.localStorage.li=JSON.stringify(data);
-	  			location.href="/admin/adminface.html";
+	  			location.href="/admin/queryPerson.html";
 	  	}
 	  	
 	  },"text");
