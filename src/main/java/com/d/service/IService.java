@@ -9,7 +9,9 @@ import com.d.entity.Person;
 public interface IService {
 
 	public String queryPersonByName(String name);
+	
 	public int addPerson(Person person);
+	
 	public String queryLogin(String name, String card);
 	
 	public List<Person> queryAllDataFromTable(@Param("page") int page, @Param("limit") int limit, @Param("keyWord") String keyWord);
@@ -17,10 +19,13 @@ public interface IService {
 	public int queryAllCount(String keyWord);
 	
 	public void updatePerson(Person person);
+	
 	public void deletePerson(String id);
+	
 	public Person findByID(String id);
+	
 	public List<Person> findAllPage(int before,int after);      
 	 
-	   public int count();
+	public int count();
 	   
 }

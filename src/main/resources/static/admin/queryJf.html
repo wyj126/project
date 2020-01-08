@@ -215,7 +215,6 @@ var myDate = new Date();
 			            //右上角关闭回调
 			            //return false 开启该代码可禁止点击该按钮关闭
 			        },
-			        
 			        success: function () {
 			            layui.use('form', function () {
 			                var form = layui.form; //只有执行了这一步，部分表单元素才会修饰成功
@@ -232,32 +231,24 @@ var myDate = new Date();
 			  
 			 };
 		  
-  
-  //分页
-  laypage.render({
-    elem: 'pageDemo' //分页容器的id
-    ,count: 100 //总页数
-    ,skin: '#1E9FFF' //自定义选中色值
-    //,skip: true //开启跳页
-    ,jump: function(obj, first){
-      if(!first){
-        layer.msg('第'+ obj.curr +'页');
-      }
-    }
-   });
-  
-  
-   })
-  		}
-  
- 
+		  //分页
+		  laypage.render({
+		    elem: 'pageDemo' //分页容器的id
+		    ,count: 100 //总页数
+		    ,skin: '#1E9FFF' //自定义选中色值
+		    //,skip: true //开启跳页
+		    ,jump: function(obj, first){
+		      if(!first){
+		        layer.msg('第'+ obj.curr +'页');
+		      }
+		    }
+		   });
+   	})
+  }
   function search(){
 	  var keyWord=$("#sear1").val();
       addData(keyWord);
-	  
   }
-  
-	
 </script>
 </body>
 </html>

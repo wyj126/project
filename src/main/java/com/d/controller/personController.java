@@ -38,21 +38,6 @@ public class personController {
 		
 	}
 	
-	/*
-	 * @RequestMapping("/addPerson") public int addPerson(@RequestParam
-	 * Map<String,String> map ) { System.out.println(map); Person person=new
-	 * Person(); person.setId(Integer.parseInt(map.get("id")));
-	 * person.setName(map.get("name"));
-	 * person.setAge(Integer.parseInt(map.get("age")));
-	 * person.setSex(map.get("sex")); person.setNationame(map.get("nationame"));
-	 * person.setIdcard(Integer.parseInt(map.get("idcard")));
-	 * person.setLevel(map.get("level")); //int i = personService.addPerson(person);
-	 * int i =1 ; System.out.print(i); System.out.println(person.toString()); return
-	 * i;
-	 * 
-	 * }
-	 */
-	
 	@RequestMapping("/addPerson")
 	public int addPerson(Person person ) {
 		System.out.println(person);
@@ -64,23 +49,6 @@ public class personController {
 		
 	}
 
-   /** @RequestMapping("/queryPerson")
-    public Map<String,Object> methodx(
-            @RequestParam(required=false,defaultValue="1") int page,
-            @RequestParam(required=false,defaultValue="15") int limit,
-            String keyWord
-    ){
-    List<Person> datas=personService.queryAllDataFromTable(page,limit,keyWord);
-        int countx=  personService.queryAllCount(keyWord);
-        Map<String,Object> map=new HashMap<String,Object>();
-        map.put("code",0);
-        map.put("msg","");
-        map.put("count",countx);
-        map.put("data",datas);
-        System.out.println(map.toString());
-        return map;
-    }
-	**/
 	//查询所有人
 	@RequestMapping(value="findallEmp")
 	 public Map<String,Object> methodx(
@@ -120,18 +88,13 @@ public class personController {
 	}
 
 	//删除
-			@RequestMapping("/personDelete")
-			public @ResponseBody String personDelete(HttpServletRequest request) throws UnsupportedEncodingException {
-				String id = request.getParameter("id");
-				personService.deletePerson(id);
-				System.out.println(id);
-//				return "redirect:/informa/mohu";
-		 			JSONObject json = new JSONObject();
-			        return json.toString();
+	@RequestMapping("/personDelete")
+	public @ResponseBody String personDelete(HttpServletRequest request) throws UnsupportedEncodingException {
+		String id = request.getParameter("id");
+		personService.deletePerson(id);
+		System.out.println(id);
+		JSONObject json = new JSONObject();
+        return json.toString();
 
-			}
-			
-	//查询
-	
-	
+	}
 }
