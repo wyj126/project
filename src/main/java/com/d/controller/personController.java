@@ -97,4 +97,12 @@ public class personController {
         return json.toString();
 
 	}
+	
+	//缴费id name 检测
+	@RequestMapping("/queryPBynameAndId")
+	public Person queryPBynameAndId(@RequestParam(value="name")String name, @RequestParam(value="id")Integer id) {
+		
+	}
+	
+	
 }

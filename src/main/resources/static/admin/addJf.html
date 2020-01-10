@@ -18,6 +18,15 @@
 <body>
 <form class="layui-form" action="">
   <div class="layui-form-item">
+    <label class="layui-form-label">ID</label>
+    <div class="layui-input-inline">
+      <input maxlength="10" id="pid" type="text" name="pid" required  lay-verify="required" placeholder="请输入ID" autocomplete="off" class="layui-input"/>
+    </div>
+    <div class="layui-input-inline">
+    	<font id="f1" style="display:none;position:relative;top:8px";size="3"; color="red"; >*只能为数字</font>
+    </div>
+  </div>
+  <div class="layui-form-item">
     <label class="layui-form-label">姓名</label>
     <div class="layui-input-inline">
       <input maxlength="15" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
@@ -63,6 +72,25 @@ layui.use('laydate', function(){
  
 <script>
 var i = 1;
+var j = 1;
+
+$("#pid").blur(function(){
+	var $num = $("#pid").val();
+	var reg =  /^[0-9]*[1-9][0-9]*$/;
+	if(!(reg.test($num))){
+		if ($num == "" || $num.length ==0){
+			$("#f1").css("display","none");
+			i=0;
+		}else{
+			$("#f1").css("display","inline");
+			i=0;
+			
+		}
+	}else{
+		$("#f1").css("display","none");
+		
+	}
+});
 
 
 //Demo
@@ -77,18 +105,26 @@ layui.use('form', function(){
 		//alert($("#name").val());
 		if($("#name").val() == ''||$("#name").val().length ==0){
 			$("#f2").css("display","none");
+			i=0;
 		}else if ($("#name").val().length>0){
 			//alert(data);
 			if (data == null||data==''){
 				$("#f2").css("display","inline");
+				i=0;
 			}else{
 				$("#f2").css("display","none");
-				 i =0;
 			}
 		}
 		//alert(data);
 	},"text")
-   if (i == 0){ 
+	
+	if (i == 1){
+	  $.post("/personController/queryByname",{name:$("#name").val()},function(data){
+		  
+	  },"text")
+	}
+	
+   if (i == 1 &&j==1){ 
 	   action = "/jfController/addPersonJf";
    }
    	var param = data.field;

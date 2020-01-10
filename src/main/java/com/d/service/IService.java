@@ -27,5 +27,7 @@ public interface IService {
 	public List<Person> findAllPage(int before,int after);      
 	 
 	public int count();
+	
+	public Person queryPBynameAndId(@Param("name") String name, @Param("id") Integer id);
 	   
 }

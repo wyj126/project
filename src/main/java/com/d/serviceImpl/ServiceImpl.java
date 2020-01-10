@@ -72,4 +72,9 @@ public class ServiceImpl implements IService {
 	public Person findByID(String id) {
 	    return mapper.findByID(id);
 	}
+
+	@Override
+	public Person queryPBynameAndId(String name, Integer id) {
+		return mapper.queryPBynameAndId(name, id);
+	}
 }
