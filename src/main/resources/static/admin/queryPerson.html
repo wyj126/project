@@ -10,12 +10,11 @@
 
 <body>
 <ul class="layui-nav" lay-filter="">
- <li class="layui-nav-item "><a href="adminface.html">欢迎admin管理员</a></li>
   <li class="layui-nav-item layui-this"><a href="queryPerson.html">党员管理</a></li>
   <li class="layui-nav-item"><a href="queryJf.html">缴费管理</a></li>
   <li class="layui-nav-item"><a href="addPerson.html">添加党员</a></li>
   <li class="layui-nav-item"><a href="addJf.html">添加缴费记录</a></li>
- <!--  <li class="layui-nav-item" style=" margin-left:750px"><a href="/loginController/loginout" >注销</a></li> -->
+  <li class="layui-nav-item" style=" margin-left:1000px"><a href="/loginController/loginout" >注销</a></li> 
 </ul>
 <div style="margin-top: 17px;margin-left: 610px;">
  人员搜索： <div class="layui-input-inline"><input maxlength="11" type="text" class="layui-input"  id="sear1" placeholder="请输入人员姓名"/>
@@ -27,22 +26,12 @@
         <div class="layui-inline">
             <table id="test"  class="layui-hide" lay-filter="demo" style="margin: 0 auto;" ></table>
         </div>
-    </div>
-
-
- 
-	<script type="text/html" id="barDemo">
+</div>
+<script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
- 
- 
- 
-  
- 
 <script>
-
- 
 layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element'], function(){
   		var laydate = layui.laydate //日期
  		,laypage = layui.laypage //分页
@@ -59,27 +48,27 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
     		console.log(data);
    	 	});
 });		
-  		function addData(kwx){
-  		    var table = layui.table;
-	  		//执行一个 table 实例
-	  		table.render({
-	    		elem: '#test'
-	    		,width:1053
-	    		,page: true //开启分页
-	    		,url:'/personController/findallEmp?keyWord='+kwx  //数据请求路径
-	            ,cellMinWidth: 80
-	            ,cols: [[
-	                {field:'id', width:150, title: 'ID', sort: true, align:'center'}
-	                ,{field:'name', width:130, title: '姓名', align:'center'}
-	                ,{field:'sex', width:100, title: '性别', align:'center'}
-	                ,{field:'age', width:100, title: '年龄', sort: true, align:'center'}
-	               ,{field:'nationame', width:100, title: '民族', align:'center'}
-	                ,{field:'idcard', width:180, title: '身份证号', align:'center'}
-	                ,{field:'level', width:118, title: '职位', align:'center'}
-	                ,{fixed: 'right', width: 165,title: '操作', align:'center', toolbar: '#barDemo', align:'center'}
-	          ]]
-	    		
-	 		 });
+function addData(kwx){
+    var table = layui.table;
+	//执行一个 table 实例
+	table.render({
+ 		elem: '#test'
+ 		,width:1053
+ 		,page: true //开启分页
+ 		,url:'/personController/findallEmp?keyWord='+kwx  //数据请求路径
+         ,cellMinWidth: 80
+         ,cols: [[
+             {field:'id', width:150, title: 'ID', sort: true, align:'center'}
+             ,{field:'name', width:130, title: '姓名', align:'center'}
+             ,{field:'sex', width:100, title: '性别', align:'center'}
+             ,{field:'age', width:100, title: '年龄', sort: true, align:'center'}
+            ,{field:'nationame', width:100, title: '民族', align:'center'}
+             ,{field:'idcard', width:180, title: '身份证号', align:'center'}
+             ,{field:'level', width:118, title: '职位', align:'center'}
+             ,{fixed: 'right', width: 165,title: '操作', align:'center', toolbar: '#barDemo', align:'center'}
+       ]]
+ 		
+	 });
   		
   		//监听工具条
   		table.on('tool(demo)', function(obj){
@@ -221,41 +210,27 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
 			 };
 		  
   
-  //分页
-  laypage.render({
-    elem: 'pageDemo' //分页容器的id
-    ,count: 100 //总页数
-    ,skin: '#1E9FFF' //自定义选中色值
-    //,skip: true //开启跳页
-    ,jump: function(obj, first){
-      if(!first){
-        layer.msg('第'+ obj.curr +'页');
-      }
-    }
-   });
-  
-  
-   })
-  		}
-  
-  
-  //查询
-/**  $(document).ready(function(){
-	  debugger;
-		$("#sear2").click(function(event){
-		    if(event.keyCode ==13){
-		     var keyWord=$("#sear1").val();
-		        addData(keyWord);
+		  //分页
+		  laypage.render({
+		    elem: 'pageDemo' //分页容器的id
+		    ,count: 100 //总页数
+		    ,skin: '#1E9FFF' //自定义选中色值
+		    //,skip: true //开启跳页
+		    ,jump: function(obj, first){
+		      if(!first){
+		        layer.msg('第'+ obj.curr +'页');
+		      }
 		    }
-		});
-  });
-  **/
+		   });
+		  
+		  
+	   })
+}
   function search(){
 	  var keyWord=$("#sear1").val();
       addData(keyWord);
 	  
   }
-  
 </script>
 
 </body>

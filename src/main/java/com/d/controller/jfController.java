@@ -48,55 +48,54 @@ public class jfController {
 	}
 	
 	
-	//查询所有人
-		@RequestMapping(value="findallEmp")
-		 public Map<String,Object> methodx(
-		            @RequestParam(required=false,defaultValue="1") int page,
-		            @RequestParam(required=false,defaultValue="15") int limit,
-		            String keyWord
-		    ){
-		    List<Jf> datas=jfService.queryAllDataFromTable(page,limit,keyWord);
-		        int countx=  jfService.queryAllCount(keyWord);
-		        Map<String,Object> map=new HashMap<String,Object>();
-		        map.put("code",0);
-		        map.put("msg","");
-		        map.put("count",countx);
-		        map.put("data",datas);
-		        System.out.println(map.toString());
-		        return map;
-		    }    
-		       
+//查询所有人
+	@RequestMapping(value="findallEmp")
+	 public Map<String,Object> methodx(
+	            @RequestParam(required=false,defaultValue="1") int page,
+	            @RequestParam(required=false,defaultValue="15") int limit,
+	            String keyWord
+	    ){
+	    List<Jf> datas=jfService.queryAllDataFromTable(page,limit,keyWord);
+	        int countx=  jfService.queryAllCount(keyWord);
+	        Map<String,Object> map=new HashMap<String,Object>();
+	        map.put("code",0);
+	        map.put("msg","");
+	        map.put("count",countx);
+	        map.put("data",datas);
+	        System.out.println(map.toString());
+	        return map;
+	    }    
+	       
 
-		@RequestMapping(value="/jfedit",method=RequestMethod.POST)
-		public @ResponseBody String  jfedit(Jf jf,HttpServletRequest request,
-				Map<String, Object> requestMap) {
-			String jfid = Integer.toString(jf.getJfid());
-			Jf personjf = jfService.findByID(jfid);
-			personjf.setJfid(jf.getJfid());
-			personjf.setName(jf.getName());
-			personjf.setTime(jf.getTime());
-			personjf.setIsjf(jf.getIsjf());
-			System.out.println(personjf+"%%%%%%%%%%%%%%%%%%%%%");
-			jfService.updateJf(personjf);
-			JSONArray json = JSONArray.fromObject(personjf);
-		    String js = json.toString();
-		    //*****转为layui需要的json格式
-		    String jso = "{\"code\":200,\"msg\":\"\",\"count\":"+0+",\"data\":"+js+"}";
-		    System.out.println(jso);
-		    return js;
-		}
+	@RequestMapping(value="/jfedit",method=RequestMethod.POST)
+	public @ResponseBody String  jfedit(Jf jf,HttpServletRequest request,
+			Map<String, Object> requestMap) {
+		String jfid = Integer.toString(jf.getJfid());
+		Jf personjf = jfService.findByID(jfid);
+		personjf.setJfid(jf.getJfid());
+		personjf.setName(jf.getName());
+		personjf.setTime(jf.getTime());
+		personjf.setIsjf(jf.getIsjf());
+		System.out.println(personjf+"%%%%%%%%%%%%%%%%%%%%%");
+		jfService.updateJf(personjf);
+		JSONArray json = JSONArray.fromObject(personjf);
+	    String js = json.toString();
+	    //*****转为layui需要的json格式
+	    String jso = "{\"code\":200,\"msg\":\"\",\"count\":"+0+",\"data\":"+js+"}";
+	    System.out.println(jso);
+	    return js;
+	}
 
-		//删除
-				@RequestMapping("/jfDelete")
-				public @ResponseBody String jfDelete(HttpServletRequest request) throws UnsupportedEncodingException {
-					String jfid = request.getParameter("jfid");
-					jfService.deleteJf(jfid);
-					System.out.println(jfid);
-//					return "redirect:/informa/mohu";
-			 			JSONObject json = new JSONObject();
-				        return json.toString();
+	//删除
+	@RequestMapping("/jfDelete")
+	public @ResponseBody String jfDelete(HttpServletRequest request) throws UnsupportedEncodingException {
+		String jfid = request.getParameter("jfid");
+		jfService.deleteJf(jfid);
+		System.out.println(jfid);
+ 		JSONObject json = new JSONObject();
+	    return json.toString();
 
-				}
-				
+	}
+			
 	
 }
