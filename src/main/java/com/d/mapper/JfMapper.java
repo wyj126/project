@@ -16,11 +16,11 @@ public interface JfMapper {
 	 
 	public int queryAllCount(String keyWord);
 	
-	void deleteJf(@Param("jfid")String jfid);
+	public void deleteJf(@Param("jfid")String jfid);
 	
-	void updateJf(Jf jf);
+	public void updateJf(Jf jf);
 	
-	Jf findByID(String jfid);
+	public Jf findByID(String jfid);
 	
 	public List<Jf> findAllPage(int before,int after);      
 	 

@@ -18,14 +18,16 @@ public interface Mapper {
 	 
 	public int queryAllCount(String keyWord);
 	
-	void deletePerson(@Param("id")String id);
+	public void deletePerson(@Param("id")String id);
 	
-	void updatePerson(Person person);
+	public void updatePerson(Person person);
 	
-	Person findByID(String id);
+	public Person findByID(String id);
 	
 	public List<Person> findAllPage(int before,int after);      
 	 
 	public int count();
+	
+	public Person queryPBynameAndId(@Param("name") String name, @Param("id") Integer id);
 	
 }
