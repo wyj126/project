@@ -72,9 +72,11 @@ public class jfController {
 			Map<String, Object> requestMap) {
 		String jfid = Integer.toString(jf.getJfid());
 		Jf personjf = jfService.findByID(jfid);
+		personjf.setId(jf.getId());
 		personjf.setJfid(jf.getJfid());
 		personjf.setName(jf.getName());
 		personjf.setTime(jf.getTime());
+		personjf.setSize(jf.getSize());
 		personjf.setIsjf(jf.getIsjf());
 		System.out.println(personjf+"%%%%%%%%%%%%%%%%%%%%%");
 		jfService.updateJf(personjf);

@@ -28,6 +28,6 @@ public interface Mapper {
 	 
 	public int count();
 	
-	public Person queryPBynameAndId(@Param("name") String name, @Param("id") Integer id);
+	public Person queryPBynameAndId(@Param("name") String name, @Param("id") String id);
 	
 }

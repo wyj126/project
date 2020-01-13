@@ -104,7 +104,7 @@
 	</select>
  	
  	<select id="queryPBynameAndId" parameterType="java.lang.String"  resultType="com.d.entity.Person">
-		select * from person where  id = #{id} and name = #{name}
+		select * from person where  id = #{id,jdbcType=VARCHAR} and name = #{name,jdbcType=VARCHAR}
 	</select>
  	
 </mapper>

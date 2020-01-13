@@ -95,16 +95,18 @@ var myDate = new Date();
 	  		//执行一个 table 实例
 	  		table.render({
 	    		elem: '#test'
-	    		,width:953
+	    		,width:1096
 	    		,page: true //开启分页
 	    		,url:'/jfController/findallEmp?keyWord='+kwx  //数据请求路径
 	            ,cellMinWidth: 80
 	            ,cols: [[
-	                {field:'jfid', width:180, title: '缴费订单', sort: true, align:'center'}
-	                ,{field:'name', width:180, title: '姓名', align:'center'}
-	                ,{field:'time', width:250, title: '缴费时间', align:'center'}
-	                ,{field:'isjf', width:140, title: '是否缴费', sort: true, align:'center'}
-	                ,{fixed: 'right', width: 197,title: '操作', align:'center', toolbar: '#barDemo'}
+	                {field:'jfid', width:172, title: '缴费订单', sort: true, align:'center'}
+	                ,{field:'id', width:172, title: '人员ID', sort: true, align:'center'}
+	                ,{field:'name', width:160, title: '姓名', align:'center'}
+	                ,{field:'time', width:230, title: '缴费时间',sort: true,  align:'center'}
+	                ,{field:'isjf', width:120, title: '是否缴费', align:'center'}
+	                ,{field:'size', width:106, title: '缴费金额', align:'center'}
+	                ,{fixed: 'right', width: 128,title: '操作', align:'center', toolbar: '#barDemo'}
 	          ]]
 	    		
 	 		 });
@@ -165,6 +167,11 @@ var myDate = new Date();
 			        '<input type="text"  disabled required lay-verify="required" name="jfid"  class="layui-input" value="'+data.jfid+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
+			        '<label class="layui-form-label">人员ID</label>' +
+			        '<div class="layui-input-inline">' +
+			        '<input type="text"  disabled required lay-verify="required" name="id"  class="layui-input" value="'+data.id+'" >' +
+			        '</div></div>' +
+			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">姓名</label>' +
 			        '<div class="layui-input-inline">' +
 			        '<input maxlength="20" type="text"  required lay-verify="required" name="name"  class="layui-input" value="'+data.name+'" >' +
@@ -173,6 +180,11 @@ var myDate = new Date();
 			        '<label class="layui-form-label">缴费时间</label>' +
 			        '<div class="layui-input-inline">' +
 			        '<input type="text" required lay-verify="required" name="time"  class="layui-input" value="'+data.time+'" >' +
+			        '</div></div>' +
+			        '<div class="layui-inline">' +
+			        '<label class="layui-form-label">缴费金额</label>' +
+			        '<div class="layui-input-inline">' +
+			        '<input maxlength="20" type="text" required lay-verify="required" name="size"  class="layui-input" value="'+data.size+'" >' +
 			        '</div></div>' +
 			        '<div class="layui-inline">' +
 			        '<label class="layui-form-label">是否缴费</label>' +
@@ -190,6 +202,8 @@ var myDate = new Date();
 			                name: $("input[name='name']").val(),
 			                time: $("input[name='time']").val(),
 			                isjf: $("input[name='isjf']").val(),
+			                id : $("input[name='id']").val(),
+			                size : $("input[name='size']").val(),
 	   
 			            };
 			         //  alert(formData.jfid+" "+formData.name+" "+formData.time+" "+formData.isjf);

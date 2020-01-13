@@ -100,7 +100,10 @@ public class personController {
 	
 	//缴费id name 检测
 	@RequestMapping("/queryPBynameAndId")
-	public Person queryPBynameAndId(@RequestParam(value="name")String name, @RequestParam(value="id")Integer id) {
+	public Person queryPBynameAndId(@RequestParam(value="name")String name, @RequestParam(value="id")String id) {
+		Person person = personService.queryPBynameAndId(name, id);
+		
+		return person;
 		
 	}
 	

@@ -8,6 +8,9 @@
       <if test="jfid != null" >
         jfid,
       </if>
+      <if test="id != null" >
+        id,
+      </if>
       <if test="name != null" >
         name,
       </if>
@@ -17,10 +20,16 @@
       <if test="isjf != null" >
         isjf,
       </if>
+      <if test="size != null" >
+        size,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="jfid != null" >
         #{jfid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="name !=null">
         #{name,jdbcType=VARCHAR},
@@ -30,6 +39,9 @@
       </if>
       <if test="isjf !=null">
         #{isjf,jdbcType=VARCHAR},
+      </if>
+      <if test="size !=null">
+        #{size,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -49,7 +61,7 @@
      </select>
  	
  	<select id="findAllPage" resultType="com.d.entity.Jf">
-         select jfid,name,time,isjf from person LIMIT #{before},#{after}
+         select jfid,id,name,time,size,isjf from person LIMIT #{before},#{after}
      </select>
    
     <select id="count" resultType="int">
@@ -60,7 +72,8 @@
 		update jf set 
 		name = #{name,jdbcType=VARCHAR},
 		time = #{time,jdbcType=DATE},
-		isjf = #{isjf,jdbcType=VARCHAR}
+		isjf = #{isjf,jdbcType=VARCHAR},
+		size = #{size,jdbcType=INTEGER}
 		where jfid = #{jfid ,jdbcType=VARCHAR}
 	</update>
 	

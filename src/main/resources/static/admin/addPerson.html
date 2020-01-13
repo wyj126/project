@@ -19,25 +19,25 @@
   <div class="layui-form-item">
     <label  class="layui-form-label">姓名</label>
     <div class="layui-input-inline">
-      <input maxlength="20" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
+      <input title="请输入姓名" maxlength="20" id="name" type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input"/>
     </div>
     <div class="layui-input-inline">
     	<font id="f1" style="display:none;position:relative;top:8px" size="3" color="red" >*姓名格式不符合</font>
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">身份证号</label>
+    <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input maxlength="20" id="idcard" type="text" name="idcard" required lay-verify="required" placeholder="请输入身份证号" autocomplete="off" class="layui-input"  />
+      <input title="请设置密码" maxlength="20" id="idcard" type="text" name="idcard" required lay-verify="required" placeholder="请设置密码" autocomplete="off" class="layui-input"  />
     </div>
     <div class="layui-input-inline">
-    	<font id="f2" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
+    	<span id="f2" style="display:none;position:relative;top:8px;width:1000px;font-size: 3;color:red;" > <nobr>*至少8个字符,至少含有字母和数字 </nobr></span>
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">年龄</label>
     <div class="layui-input-inline">
-      <input maxlength="4" id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input"/>
+      <input title="请输入年龄" maxlength="4" id="age" type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input"/>
     </div>
      <div class="layui-input-inline">
     	<font id="f3" style="display:none;position:relative;top:8px" size="3" color="red" >*年龄格式不符合</font>
@@ -137,7 +137,7 @@
 </form>
  
 <script>
-var i =1;
+var i =0;
 
 $("#name").blur(function(){
 	var $num = $("#name").val();
@@ -145,27 +145,30 @@ $("#name").blur(function(){
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f1").css("display","none");
+			i=1;
 		}else{
 			$("#f1").css("display","inline");
-			i=0;
+			i=1;
 		}
 	}else{
 		$("#f1").css("display","none");
 	}
 });
 
-$("#pwd").blur(function(){
-	var $num = $("#pwd").val();
-	var reg = /^[0-9]*[1-9][0-9]*$/;
+$("#idcard").blur(function(){
+	var $num = $("#idcard").val();
+	var reg =  /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]{8,18}$/;
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f2").css("display","none");
+			i=1;
 		}else{
 			$("#f2").css("display","inline");
-			i=0;
+			i=1;
 		}
 	}else{
 		$("#f2").css("display","none");
+		
 	}
 });
 
@@ -175,9 +178,10 @@ $("#age").blur(function(){
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f3").css("display","none");
+			i=1;
 		}else{
 			$("#f3").css("display","inline");
-			i=0;
+			i=1;
 		}
 	}else{
 		$("#f3").css("display","none");
@@ -194,7 +198,7 @@ layui.use('form', function(){
 	  	var param = data.field;
 		//layer.msg(JSON.stringify(data.field));
 		var action = "/personController/addPerson";
-	  	if (i==0){
+	  	if (i==1){
 	  		action = " ";
 	  	} 
 		 $.ajax({
@@ -205,11 +209,11 @@ layui.use('form', function(){
 	                if(res>0){
 	                	setTimeout(function(){
 	                    	top.layer.msg("添加成功！");
-	                    	 },1500);
+	                    	 },1000);
 	                    setTimeout(function(){
 	                        //刷新页面
 	                        parent.location.reload();
-	                    },3000);
+	                    },2000);
 	                }else{
 	                	setTimeout(function(){
 	                		top.layer.msg("添加失败！");

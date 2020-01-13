@@ -74,7 +74,7 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-	public Person queryPBynameAndId(String name, Integer id) {
+	public Person queryPBynameAndId(String name, String id) {
 		return mapper.queryPBynameAndId(name, id);
 	}
 }

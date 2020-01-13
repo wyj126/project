@@ -9,15 +9,29 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Jf {
 
 	private Integer jfid;
+	private Integer id;
 	private String name;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate time;
 	private String isjf;
+	private Integer size;
 	public int getJfid() {
 		return jfid;
 	}
 	public void setJfid(int jfid) {
 		this.jfid = jfid;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getSize() {
+		return size;
+	}
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 	public String getName() {
 		return name;
