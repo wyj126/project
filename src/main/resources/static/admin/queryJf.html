@@ -78,7 +78,7 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
   		 }
   		});   
 });
-var myDate = new Date();
+	var myDate = new Date();
 	var year=parseInt(myDate.getFullYear());        //获取当前年
 		$(function(){
 				$("#o0").val(year+1);
@@ -90,6 +90,7 @@ var myDate = new Date();
 				$("#o3").val(year-2);
 				$("#o3").text(year-2);
 			})
+	
   		function addData(kwx){
   		    var table = layui.table;
 	  		//执行一个 table 实例
@@ -104,8 +105,8 @@ var myDate = new Date();
 	                ,{field:'id', width:172, title: '人员ID', sort: true, align:'center'}
 	                ,{field:'name', width:160, title: '姓名', align:'center'}
 	                ,{field:'time', width:230, title: '缴费时间',sort: true,  align:'center'}
-	                ,{field:'isjf', width:120, title: '是否缴费', align:'center'}
 	                ,{field:'size', width:106, title: '缴费金额', align:'center'}
+	                ,{field:'isjf', width:120, title: '是否缴费', align:'center'}
 	                ,{fixed: 'right', width: 128,title: '操作', align:'center', toolbar: '#barDemo'}
 	          ]]
 	    		
@@ -258,10 +259,6 @@ var myDate = new Date();
 		    }
 		   });
    	})
-  }
-  function search(){
-	  var keyWord=$("#sear1").val();
-      addData(keyWord);
   }
 </script>
 </body>

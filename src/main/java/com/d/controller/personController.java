@@ -102,10 +102,22 @@ public class personController {
 	@RequestMapping("/queryPBynameAndId")
 	public Person queryPBynameAndId(@RequestParam(value="name")String name, @RequestParam(value="id")String id) {
 		Person person = personService.queryPBynameAndId(name, id);
-		
 		return person;
-		
 	}
 	
+	@RequestMapping("/queryNameByID")
+	public String queryNameByID (@RequestParam(value="id")String id) {
+		return personService.queryNameByID(id);
+	}
+	
+	@RequestMapping("/findByID")
+	public Person personUp(String id) {
+		return personService.findByID(id);
+	}
+	
+	@RequestMapping("/updatePersonInP")
+	public void updatePersonInP(Person person) {
+		personService.updatePersonInP(person);
+	}
 	
 }

@@ -2,6 +2,7 @@ package com.d.serviceImpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,9 @@ public class ServiceImpl implements IService {
 		
 	}
 
-	
+	public String queryNameByID(String id) {
+		return mapper.queryNameByID(id);
+	};
 
 	@Override
 	public String queryLogin(String name, String card) {
@@ -40,7 +43,7 @@ public class ServiceImpl implements IService {
 		page=(page-1)*limit;
 		return mapper.queryAllDataFromTable(page,limit,keyWord);
 	}
-
+	
 	@Override
 	public int queryAllCount(String keyWord) {
 		// TODO Auto-generated method stub
@@ -77,4 +80,10 @@ public class ServiceImpl implements IService {
 	public Person queryPBynameAndId(String name, String id) {
 		return mapper.queryPBynameAndId(name, id);
 	}
+
+	@Override
+	public void updatePersonInP(Person person) {
+		 mapper.updatePersonInP(person);
+	}
+
 }

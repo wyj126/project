@@ -33,7 +33,6 @@ public class LoginHandler {
 		String is = null;
 		System.out.println("Handler");
 		is = adminService.queryAdmin(aname, apassword);
-		System.out.println(is);
 		 if (is != null && !"".equals(is)) {
 	            session.setAttribute("name", aname);
 	        } else {
@@ -45,25 +44,21 @@ public class LoginHandler {
 	}
 	
 	@RequestMapping("/personlogin")
-	public String queryByname2(@RequestParam(value="name") String name,@RequestParam(value="password") String password,HttpSession httpSession) {
+	public String queryByname2(@RequestParam(value="name") String name,@RequestParam(value="password") String password,HttpSession session) {
 		String is = null;
-		httpSession.setAttribute("name", name);
 		is = personService.queryLogin(name, password);
-		System.out.println(name);
-		System.out.println(is);
-		if (is!=null) {
-			return name;
-		}else {
-			return is;
-		}
+		 if (is != null && !"".equals(is)) {
+	            session.setAttribute("name", name);
+	        } else {
+	        	
+	        }
+		return is;
 	}
 	
 	
 	@RequestMapping("/loginout")
 	public ModelAndView queryByname3(HttpSession session) {
 		 session.removeAttribute("name");
-		 System.out.println(session.getAttribute("name"));
-		 System.out.println("===");
         return new ModelAndView(new RedirectView("/index.html"));
 	}
 	

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.d.entity.Jf;
 import com.d.entity.Person;
 import com.d.entity.UUIDTools;
+import com.d.service.IService;
 import com.d.service.JFService;
 
 import net.sf.json.JSONArray;
@@ -30,6 +32,10 @@ public class jfController {
 
 	@Autowired
 	private JFService jfService;
+	
+	@Autowired
+	private IService personService;
+	
 	
 	@RequestMapping("/addPersonJf")
 	public int addPersonJf(Jf jf) {
@@ -65,6 +71,29 @@ public class jfController {
 	        System.out.println(map.toString());
 	        return map;
 	    }    
+	
+	@RequestMapping(value="findallEmp2")
+	public Map<String,Object> methodx2(
+			@RequestParam(required=false,defaultValue="1") int page,
+			@RequestParam(required=false,defaultValue="15") int limit,
+			HttpServletRequest request,HttpServletResponse response,
+			String keyWord,
+			String name
+			){
+		if (request.getSession().getAttribute("name")!=null||request.getSession().getAttribute("name")!=" ") {
+			String i =  (String) request.getSession().getAttribute("name");
+			name = personService.queryNameByID(i);
+		}
+		List<Jf> datas=jfService.queryAllDataFromTable2(page, limit, keyWord,name);
+		int countx=  jfService.queryAllCount2(name);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",countx);
+		map.put("data",datas);
+		System.out.println(map.toString());
+		return map;
+	}    
 	       
 
 	@RequestMapping(value="/jfedit",method=RequestMethod.POST)
@@ -99,5 +128,7 @@ public class jfController {
 
 	}
 			
+	
+	
 	
 }

@@ -15,7 +15,7 @@ public interface Mapper {
 	public String queryLogin(@Param("name") String name, @Param("password") String password);
 	
 	public List<Person> queryAllDataFromTable(@Param("page") int page, @Param("limit") int limit, @Param("keyWord") String keyWord);
-	 
+	 	
 	public int queryAllCount(String keyWord);
 	
 	public void deletePerson(@Param("id")String id);
@@ -30,4 +30,7 @@ public interface Mapper {
 	
 	public Person queryPBynameAndId(@Param("name") String name, @Param("id") String id);
 	
+	public String queryNameByID(@Param("id")String id);
+	
+	public void updatePersonInP(Person person);
 }

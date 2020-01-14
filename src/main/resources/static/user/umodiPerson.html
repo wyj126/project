@@ -24,12 +24,12 @@
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">身份证号</label>
+    <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input maxlength="20" id="idcard" type="text" name="idcard" required lay-verify="required" placeholder="请输入身份证号" autocomplete="off" class="layui-input"  />
+      <input maxlength="20" id="idcard" type="text" name="idcard" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"  />
     </div>
     <div class="layui-input-inline">
-    	<font id="f2" style="display:none;position:relative;top:8px" size="3" color="red" >*只能为数字</font>
+    	<span id="f2" style="display:none;position:relative;top:8px;width:1000px;font-size: 3;color:red;" > <nobr>*至少8个字符,至少含有字母和数字 </nobr></span>
     </div>
   </div>
   <div class="layui-form-item">
@@ -44,8 +44,8 @@
   <div class="layui-form-item">
     <label class="layui-form-label">民族</label>
     <div class="layui-input-inline">
-      <select  id="nationame" name="nationame" lay-verify="required">
-        <option value=""></option>
+      <select lay-filter="nationame" id="nationame" name="nationame" lay-verify="required">
+        <option id="nationameA" value=""></option>
          <option value="汉族">汉族</option>  
 	    <option value="蒙古族">蒙古族</option>  
 	    <option value="回族">回族</option>  
@@ -116,8 +116,8 @@
   <div class="layui-form-item">
     <label class="layui-form-label">职务</label>
     <div class="layui-input-inline">
-      <select style="width: 190px" id="level" name="level" lay-verify="required">
-        <option value=""></option>
+      <select lay-filter="level" style="width: 190px" id="level" name="level" lay-verify="required">
+        <option id="levelA" value=""></option>
          <option value="党支部书记">党支部书记</option>  
 	    <option value="党支部副书记">党支部副书记</option>  
 	    <option value="组织委员">组织委员</option>  
@@ -136,6 +136,9 @@
  
 <script>
 var i =1;
+var n ;
+n = JSON.parse(window.localStorage.li);
+
 
 $("#name").blur(function(){
 	var $num = $("#name").val();
@@ -152,9 +155,9 @@ $("#name").blur(function(){
 	}
 });
 
-$("#pwd").blur(function(){
-	var $num = $("#pwd").val();
-	var reg = /^[0-9]*[1-9][0-9]*$/;
+$("#idcard").blur(function(){
+	var $num = $("#idcard").val();
+	var reg = /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]{8,18}$/;
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f2").css("display","none");
@@ -186,36 +189,40 @@ $("#age").blur(function(){
 //Demo
 layui.use('form', function(){
   var form = layui.form;
+  var ppid;
+  
+  $(function(){  
+	    $.post("/personController/findByID",{id:n},function(data){
+	   	 //console.log(data);
+	   	 ppid = data.id;
+	   	 $("#name").val(data.name);
+	   	 $("#idcard").val(data.idcard);
+	   	 $("#age").val(data.age);
+	   	 $("#sex").val(data.sex);
+	   	 $("#nationameA").val(data.nationame);
+	   	 $("#nationameA").text(data.nationame);
+	   	 $("#levelA").val(data.level);
+	   	 $("#levelA").text(data.level);
+	   	 form.render();
+	    },"Json");
+	}); 
+  
+  form.on('select(*)', function(data){
+	  //debugger;
+	  //console.log(data.value);
+	});      
   
   //监听提交
   form.on('submit(formDemo)', function(data){
 	  	var param = data.field;
+	  	param.id = ppid;
+	  	console.log(param);
 		//layer.msg(JSON.stringify(data.field));
-		var action = "/personController/addPerson";
-	  	if (i==0){
-	  		action = " ";
-	  	} 
-		 $.ajax({
-	            url:action,
-	            type:"post",
-	            data:param,
-	            success:function(res){
-	                if(res>0){
-	                	setTimeout(function(){
-	                    	top.layer.msg("添加成功！");
-	                    	 },1500);
-	                    setTimeout(function(){
-	                        //刷新页面
-	                        parent.location.reload();
-	                    },3000);
-	                }else{
-	                	setTimeout(function(){
-	                		top.layer.msg("添加失败！");
-	                    	 },1000);
-	                }
-	            }
-	        });
-    	
+		var action = "/personController/updatePersonInP";
+		$.post(action,param,function(res){
+			
+		});
+		 
     return false;
   });
 });

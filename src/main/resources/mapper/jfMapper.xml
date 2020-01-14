@@ -53,10 +53,22 @@
 	    </if>
 	    limit #{page},#{limit}
 	</select>
+	
+ 	<select id="queryAllDataFromTable2" resultType="com.d.entity.Jf">
+	    select * from jf where name like '%${name}%'  and time LIKE binary '%${keyWord}%'
+	</select>
+	
      <select id="queryAllCount" resultType="java.lang.Integer" parameterType="java.lang.String">
         select count(*) from jf
         <if test='_parameter != "" and _parameter != null'>
             where name LIKE '%${_parameter}%'
+        </if>
+     </select>
+	
+     <select id="queryAllCount2" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(*) from jf
+        <if test='_parameter != "" and _parameter != null'>
+            where name = #{name,jdbcType=VARCHAR}
         </if>
      </select>
  	

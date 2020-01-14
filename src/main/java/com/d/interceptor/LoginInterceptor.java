@@ -29,12 +29,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 		  /** 判断session是否存在用户,如果存在说明用户已经登录了,应该放行 */
 		  Object admin = request.getSession().getAttribute("name");
 		  
-		  System.out.println(request.getSession().toString());
-		  System.out.println(admin); 
 		  if(admin == null) { 
-			  System.out.println("尚未登录，调到登录页面");
 			  response.sendRedirect("/index.html");	
-			  System.out.println("*-***********************************");
 			  return false; 
 		  }
 		  
@@ -46,16 +42,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("postHandle");
 
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("afterCompletion");
 
 	}
 
