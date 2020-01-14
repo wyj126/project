@@ -8,7 +8,7 @@
  	</select>
  	
  	<select id="queryLogin" resultType="java.lang.String">
- 		select * from person where name=#{name} and idcard=#{password}
+ 		select * from person where id=#{name} and idcard=#{password}
  	</select>
   
   <insert id="addPerson" parameterType="com.d.entity.Person" >
@@ -107,4 +107,19 @@
 		select * from person where  id = #{id,jdbcType=VARCHAR} and name = #{name,jdbcType=VARCHAR}
 	</select>
  	
+ 	<select id="queryNameByID" parameterType="java.lang.String"  resultType="java.lang.String">
+		select name from person where  id = #{id,jdbcType=VARCHAR} 
+	</select>
+	
+	<update id="updatePersonInP" parameterType="com.d.entity.Person">
+		update person set 
+		name = #{name,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=VARCHAR},
+		age = #{age,jdbcType=VARCHAR},
+		nationame = #{nationame,jdbcType=VARCHAR},
+		idcard = #{idcard,jdbcType=VARCHAR},
+		level = #{level,jdbcType=VARCHAR} 
+		where id = #{id ,jdbcType=VARCHAR}
+	</update>
+	
 </mapper>

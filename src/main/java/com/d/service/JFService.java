@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.d.entity.Jf;
+import com.d.entity.Person;
 
 public interface JFService {
 
@@ -12,7 +13,11 @@ public interface JFService {
 	
 	public List<Jf> queryAllDataFromTable(@Param("page") int page, @Param("limit") int limit, @Param("keyWord") String keyWord);
 	 
+	public List<Jf> queryAllDataFromTable2(@Param("page") int page, @Param("limit") int limit, @Param("keyWord") String keyWord,@Param("name") String name);
+	
 	public int queryAllCount(String keyWord);
+	
+	public int queryAllCount2(String name);
 	
 	public void updateJf(Jf jf);
 	

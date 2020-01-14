@@ -40,11 +40,8 @@ public class personController {
 	
 	@RequestMapping("/addPerson")
 	public int addPerson(Person person ) {
-		System.out.println(person);
 		person.setId(UUIDTools.getUUIDInOrderId());
-		System.out.println(person);
 		int i = personService.addPerson(person);
-		System.out.print(i);
 		return i;
 		
 	}
@@ -63,7 +60,6 @@ public class personController {
 	        map.put("msg","");
 	        map.put("count",countx);
 	        map.put("data",datas);
-	        System.out.println(map.toString());
 	        return map;
 	    }
 	       
@@ -102,10 +98,22 @@ public class personController {
 	@RequestMapping("/queryPBynameAndId")
 	public Person queryPBynameAndId(@RequestParam(value="name")String name, @RequestParam(value="id")String id) {
 		Person person = personService.queryPBynameAndId(name, id);
-		
 		return person;
-		
 	}
 	
+	@RequestMapping("/queryNameByID")
+	public String queryNameByID (@RequestParam(value="id")String id) {
+		return personService.queryNameByID(id);
+	}
+	
+	@RequestMapping("/findByID")
+	public Person personUp(String id) {
+		return personService.findByID(id);
+	}
+	
+	@RequestMapping("/updatePersonInP")
+	public void updatePersonInP(Person person) {
+		personService.updatePersonInP(person);
+	}
 	
 }

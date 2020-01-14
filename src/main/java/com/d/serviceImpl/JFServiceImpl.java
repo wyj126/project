@@ -2,6 +2,7 @@ package com.d.serviceImpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class JFServiceImpl implements JFService {
 		page=(page-1)*limit;
 		return jfMapper.queryAllDataFromTable(page,limit,keyWord);
 	}
-
+	
 	@Override
 	public int queryAllCount(String keyWord) {
 		// TODO Auto-generated method stub
@@ -56,6 +57,18 @@ public class JFServiceImpl implements JFService {
 	}
 	public Jf findByID(String jfid) {
 	    return jfMapper.findByID(jfid);
+	}
+
+	@Override
+	public List<Jf> queryAllDataFromTable2(int page, int limit, String keyWord,String name) {
+		// TODO Auto-generated method stub
+		return jfMapper.queryAllDataFromTable2(page, limit, keyWord, name);
+	}
+
+	@Override
+	public int queryAllCount2(String name) {
+		// TODO Auto-generated method stub
+		return jfMapper.queryAllCount2(name);
 	}
 
 
