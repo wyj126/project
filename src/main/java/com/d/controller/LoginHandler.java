@@ -31,7 +31,6 @@ public class LoginHandler {
 	@RequestMapping("/adminlogin")
 	public String queryByname(@RequestParam(value="name") String aname,@RequestParam(value="password") String apassword,HttpSession session) {
 		String is = null;
-		System.out.println("Handler");
 		is = adminService.queryAdmin(aname, apassword);
 		 if (is != null && !"".equals(is)) {
 	            session.setAttribute("name", aname);

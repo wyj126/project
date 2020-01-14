@@ -45,10 +45,8 @@ public class jfController {
 		if (jf.getIsjf().equals("on")) {
 			jf.setIsjf("是");
 		}
-		System.out.println(jf);
 		jf.setJfid(UUIDTools.getUUIDInOrderId());
 		int i = jfService.addPersonJf(jf);
-		System.out.print(i);
 		return i;
 		
 	}
@@ -68,7 +66,6 @@ public class jfController {
 	        map.put("msg","");
 	        map.put("count",countx);
 	        map.put("data",datas);
-	        System.out.println(map.toString());
 	        return map;
 	    }    
 	
@@ -91,7 +88,6 @@ public class jfController {
 		map.put("msg","");
 		map.put("count",countx);
 		map.put("data",datas);
-		System.out.println(map.toString());
 		return map;
 	}    
 	       
@@ -113,7 +109,6 @@ public class jfController {
 	    String js = json.toString();
 	    //*****转为layui需要的json格式
 	    String jso = "{\"code\":200,\"msg\":\"\",\"count\":"+0+",\"data\":"+js+"}";
-	    System.out.println(jso);
 	    return js;
 	}
 
@@ -122,7 +117,6 @@ public class jfController {
 	public @ResponseBody String jfDelete(HttpServletRequest request) throws UnsupportedEncodingException {
 		String jfid = request.getParameter("jfid");
 		jfService.deleteJf(jfid);
-		System.out.println(jfid);
  		JSONObject json = new JSONObject();
 	    return json.toString();
 

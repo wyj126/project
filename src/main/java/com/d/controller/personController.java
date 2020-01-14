@@ -40,11 +40,8 @@ public class personController {
 	
 	@RequestMapping("/addPerson")
 	public int addPerson(Person person ) {
-		System.out.println(person);
 		person.setId(UUIDTools.getUUIDInOrderId());
-		System.out.println(person);
 		int i = personService.addPerson(person);
-		System.out.print(i);
 		return i;
 		
 	}
@@ -63,7 +60,6 @@ public class personController {
 	        map.put("msg","");
 	        map.put("count",countx);
 	        map.put("data",datas);
-	        System.out.println(map.toString());
 	        return map;
 	    }
 	       
