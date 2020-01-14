@@ -138,6 +138,8 @@
  
 <script>
 var i =0;
+var j =0;
+var k =0;
 
 $("#name").blur(function(){
 	var $num = $("#name").val();
@@ -145,13 +147,12 @@ $("#name").blur(function(){
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f1").css("display","none");
-			i=1;
 		}else{
 			$("#f1").css("display","inline");
-			i=1;
 		}
 	}else{
 		$("#f1").css("display","none");
+		i=1;
 	}
 });
 
@@ -161,14 +162,12 @@ $("#idcard").blur(function(){
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f2").css("display","none");
-			i=1;
 		}else{
 			$("#f2").css("display","inline");
-			i=1;
 		}
 	}else{
 		$("#f2").css("display","none");
-		
+		j=1;
 	}
 });
 
@@ -178,13 +177,12 @@ $("#age").blur(function(){
 	if(!(reg.test($num))){
 		if ($num == "" || $num.length ==0){
 			$("#f3").css("display","none");
-			i=1;
 		}else{
 			$("#f3").css("display","inline");
-			i=1;
 		}
 	}else{
 		$("#f3").css("display","none");
+		k=1;
 	}
 });
 
@@ -197,9 +195,9 @@ layui.use('form', function(){
   form.on('submit(formDemo)', function(data){
 	  	var param = data.field;
 		//layer.msg(JSON.stringify(data.field));
-		var action = "/personController/addPerson";
-	  	if (i==1){
-	  		action = " ";
+		var action = " ";
+	  	if (i==1&&j==1&&k==1){
+	  		action = "/personController/addPerson";
 	  	} 
 		 $.ajax({
 	            url:action,

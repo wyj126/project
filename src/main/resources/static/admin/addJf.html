@@ -83,6 +83,7 @@ layui.use('laydate', function(){
 var i = 0;
 var j = 0;
 var k = 0;
+var z = 0;
 $("#id").blur(function(){
 	var $num = $("#id").val();
 	var reg =  /^[0-9]*[1-9][0-9]*$/;
@@ -108,7 +109,7 @@ $("#size").blur(function(){
 		}
 	}else{
 		$("#f3").css("display","none");
-		i=1;
+		z=1;
 	}
 });
 
@@ -148,7 +149,7 @@ layui.use('form', function(){
 			}
 	 },"text") ;
 
-   if (i == 1&& j==1&&k==1){ 
+   if (i == 1&& j==1&&k==1&&z==1){ 
 	   action = "/jfController/addPersonJf";
    }
    	var param = data.field;
