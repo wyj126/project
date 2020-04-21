@@ -1,4 +1,4 @@
-  package com.d.test;
+  package com.d;
 
 import java.util.TimeZone;
 
